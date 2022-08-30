@@ -10,7 +10,9 @@ def main():
     )
     args = argparser.parse_args()
 
-    print(f"Now I need to process the records in {args.fastq}")
+    for l in args.fastq.readlines():
+        if l[0] != "@":
+            print(l.strip())
 
 
 if __name__ == '__main__':
