@@ -10,9 +10,8 @@ def main():
     )
     args = argparser.parse_args()
 
-    for l in args.fastq.readlines():
-        if l[0] != "@":
-            print(l.strip())
+    for l in (l for l in args.fastq if l and not l.startswith('@')):
+        print(l.strip())
 
 
 if __name__ == '__main__':
